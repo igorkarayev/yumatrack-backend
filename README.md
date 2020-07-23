@@ -10,7 +10,6 @@ This guid is showing how to start works with YumaTrack backend
     * [Run locally](#run-locally-docker)
     * [Migrations](#migrations)
     * [Local DB credentials](#local-db-credentials)
-* [Documentation](#documentation)
 
 
 ## Requirements
@@ -89,7 +88,3 @@ npm run migration:revert
 - TYPEORM_DATABASE = local_yumatrack
 
 **[⬆ back to top](#yuma-development-guid)**
-
-## Documentation
-
-[API documentation](http://52.214.198.7:3000)
