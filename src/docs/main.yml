@@ -1,0 +1,212 @@
+openapi: '3.0.0'
+info:
+  version: 0.0.1
+  title: YumaTrack
+  description: OpenAPI documentations
+paths:
+  /sevices/check-tfa:
+    $ref: 'endpoints/checkTFA.yml'
+
+  /users/{userId}:
+    $ref: 'endpoints/userById.yml'
+  /users/{userId}/role:
+    $ref: 'endpoints/userByIdRoles.yml'
+  /users/{userId}/status:
+    $ref: 'endpoints/userByIdStatus.yml'
+  /users:
+    $ref: 'endpoints/user.yml'
+  /users/{userId}/tfa:
+    $ref: 'endpoints/tfa.yml'
+  /users/{userId}/tfa/verify:
+    $ref: 'endpoints/tfaVerify.yml'
+
+  /transactions:
+    $ref: 'endpoints/transaction.yml'
+  /transactions/{transactionId}:
+    $ref: 'endpoints/transactionById.yml'
+  /transactions/{transactionId}/approve:
+    $ref: 'endpoints/approveTransaction.yml'
+  /transactions/stations/from:
+    $ref: 'endpoints/station.yml#/GetTransactionsFromStations'
+  /transactions/stations/to:
+    $ref: 'endpoints/station.yml#/GetTransactionsToStations'
+
+  /companies:
+    $ref: 'endpoints/company.yml'
+  /companies/admin:
+    $ref: 'endpoints/companyWithAdmin.yml'
+  /companies/{companyId}/add-pcurv:
+    $ref: 'endpoints/companyWithAdminByUserId.yml'
+  /companies/{companyId}/users:
+    $ref: 'endpoints/usersByCompany.yml'
+  /companies/{companyId}/counterparties:
+    $ref: 'endpoints/counterpartyConnectionsByCompany.yml'
+  /companies/{companyId}/counterparties/internal:
+    $ref: 'endpoints/internalCounterpartyConnectionsByCompany.yml'
+  /companies/{companyId}/counterparties/warnings:
+    $ref: 'endpoints/counterpartyWarningsByCompany.yml'
+  /companies/{companyId}/balance:
+    $ref: 'endpoints/consolidatedBalanceByCompany.yml'
+  /companies/{companyId}/transactions:
+    $ref: 'endpoints/transactionsByCompany.yml'
+  /companies/{companyId}:
+    $ref: 'endpoints/companyById.yml'
+  /companies/{companyId}/status:
+    $ref: 'endpoints/companyByIdStatus.yml'
+  /companies/{companyId}/whitelist/addresses:
+    $ref: 'endpoints/companyByIdWhitelist.yml'
+  /companies/whitelist/addresses:
+      $ref: 'endpoints/companyWhitelist.yml'
+  /companies/{companyId}/receiving/addresses:
+    $ref: 'endpoints/companyByIdReceiving.yml'
+
+  /currencies:
+    $ref: 'endpoints/currency.yml'
+  /companies/{companyId}/currencies:
+      $ref: 'endpoints/currencies.yml'
+
+  /counterparties:
+    $ref: 'endpoints/counterparty.yml'
+  /counterparties/connection:
+    $ref: 'endpoints/counterpartyConnection.yml'
+  /counterparties/connection/{counterpartyConnectionId}:
+    $ref: 'endpoints/counterpartyById.yml'
+  /counterparties/getDepositAddressOrCreate:
+    $ref: 'endpoints/counterpartyDepositAddress.yml'
+  /counterparties/connection/{counterpartyConnectionId}/status:
+    $ref: 'endpoints/counterpartyByIdStatus.yml'
+  /counterparties/connection/{counterpartyConnectionId}/balances:
+    $ref: 'endpoints/counterpartyBalances.yml'
+  /counterparties/connection/{counterpartyConnectionId}/validate:
+    $ref: 'endpoints/counterpartyByIdValidate.yml'
+  /counterparties/connection/{counterpartyConnectionId}/wallet:
+    $ref: 'endpoints/counterpartyByIdCreateWallet.yml'
+
+  /cryptocompare:
+    $ref: 'endpoints/cryptocompare.yml'
+
+  /auth/login:
+    $ref: 'endpoints/authLogin.yml'
+  /auth/logout:
+    $ref: 'endpoints/authLogout.yml'
+  /auth/password:
+    $ref: 'endpoints/authPassword.yml'
+  /auth/refresh:
+    $ref: 'endpoints/authRefresh.yml'
+  /auth/password/set-by-token:
+    $ref: 'endpoints/setNewPasswordByToken.yml#/SetNewPasswordByToken'
+components:
+  schemas:
+    User:
+      $ref: 'components/user.yml#/User'
+    UserForUpdate:
+      $ref: 'components/user.yml#/UserForUpdate'
+    UserForCreate:
+      $ref: 'components/user.yml#/UserForCreate'
+    PublicUserDetails:
+      $ref: 'components/user.yml#/PublicUserDetails'
+    RolesCongiguration:
+      $ref: 'components/user.yml#/RolesCongiguration'
+    StatusCongiguration:
+      $ref: 'components/user.yml#/StatusCongiguration'
+    TFA:
+      $ref: 'components/user.yml#/TFA'
+    TFAEnable:
+      $ref: 'components/user.yml#/TFAEnable'
+    TFAVerify:
+      $ref: 'components/user.yml#/TFAVerify'
+
+    Company:
+      $ref: 'components/company.yml#/Company'
+    CompanyForCreate:
+      $ref: 'components/company.yml#/CompanyForCreate'
+    CompanyAndAdminForCreate:
+      $ref: 'components/company.yml#/CompanyAndAdminForCreate'
+    CompanyForUpdate:
+      $ref: 'components/company.yml#/CompanyForUpdate'
+    CompanyStatusCongiguration:
+      $ref: 'components/company.yml#/CompanyStatusCongiguration'
+
+    ReceivingAddress:
+      $ref: 'components/receiving.yml#/ReceivingAddress'
+
+    WhitelistedAddress:
+      $ref: 'components/whitelist.yml#/WhitelistedAddress'
+    WhitelistedAddressForCreate:
+      $ref: 'components/whitelist.yml#/WhitelistedAddressForCreate'
+
+    Counterparty:
+      $ref: 'components/counterparty.yml#/Counterparty'
+    CounterpartyConnectionForCreate:
+      $ref: 'components/counterparty.yml#/CounterpartyConnectionForCreate'
+    DepositAddress:
+      $ref: 'components/counterparty.yml#/DepositAddress'
+    DepositAddressResponse:
+      $ref: 'components/counterparty.yml#/DepositAddressResponse'
+    CounterpartyConnection:
+      $ref: 'components/counterparty.yml#/CounterpartyConnection'
+    InternalCounterpartyConnection:
+      $ref: 'components/counterparty.yml#/InternalCounterpartyConnection'
+    CounterpartyConnectionDetailsForSA:
+      $ref: 'components/counterparty.yml#/CounterpartyConnectionDetailsForSA'
+    CounterpartyConnectionRequests:
+      $ref: 'components/counterparty.yml#/CounterpartyConnectionRequests'
+    CounterpartyConnectionForUpdate:
+      $ref: 'components/counterparty.yml#/CounterpartyConnectionForUpdate'
+    CounterpartyConnectionStatusCongiguration:
+      $ref: 'components/counterparty.yml#/CounterpartyConnectionStatusCongiguration'
+    ValidateCounterpartyCredentials:
+      $ref: 'components/counterparty.yml#/ValidateCounterpartyCredentials'
+    CounterpartyWarnings:
+      $ref: 'components/counterparty.yml#/CounterpartyWarnings'
+    WalletIdRequest:
+      $ref: 'components/counterparty.yml#/WalletIdRequest'
+
+    CurrencyRate:
+      $ref: 'components/cryptocompare.yml#/CurrencyRate'
+
+    Transaction:
+      $ref: 'components/transaction.yml#/Transaction'
+    TransactionForCreate:
+      $ref: 'components/transaction.yml#/TransactionForCreate'
+    TransactionForApprove:
+      $ref: 'components/transaction.yml#/TransactionForApprove'
+    TransactionAddressStation:
+      $ref: 'components/transaction.yml#/AddressStation'
+    TransactionCounterpartyStation:
+      $ref: 'components/transaction.yml#/CounterpartyStation'
+    TransactionStation:
+      $ref: 'components/transaction.yml#/Station'
+    TransactionForCreateCounterparty:
+      $ref: 'components/transaction.yml#/TransactionForCreateCounterparty'
+    TransactionForCreateAddress:
+      $ref: 'components/transaction.yml#/TransactionForCreateAddress'
+
+    Currency:
+      $ref: 'components/currency.yml#/Currency'
+
+    ConsolidatedBalance:
+      $ref: 'components/balance.yml#/ConsolidatedBalance'
+    Balance:
+      $ref: 'components/balance.yml#/Balance'
+    MostRecentBalanceItem:
+      $ref: 'components/balance.yml#/MostRecentBalanceItem'
+    CounterpartyMostRecentBalances:
+      $ref: 'components/balance.yml#/CounterpartyMostRecentBalances'
+
+    Credential:
+      $ref: 'components/auth.yml#/Credential'
+    CredentialWithCompany:
+      $ref: 'components/auth.yml#/CredentialWithCompany'
+    Passwords:
+      $ref: 'components/auth.yml#/Passwords'
+    Tokens:
+      $ref: 'components/auth.yml#/Tokens'
+    RefreshToken:
+      $ref: 'components/auth.yml#/RefreshToken'
+    SetNewPasswordByToken:
+      $ref: 'components/auth.yml#/SetNewPasswordByToken'
+    Error:
+      $ref: 'components/error.yml#/Error'
+    Pagination:
+      $ref: 'components/pagination.yml#/Pagination'

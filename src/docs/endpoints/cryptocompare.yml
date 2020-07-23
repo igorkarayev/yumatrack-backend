@@ -1,0 +1,59 @@
+get:
+  summary: Returns currency rate
+  operationId: getCurrencyRate
+  tags:
+    - cryptocompare
+  parameters:
+    - name: sourceCurrency
+      in: query
+      required: true
+      description: Source currency
+      schema:
+        type: string
+    - name: targetCurrency
+      in: query
+      required: true
+      description: Target currency
+      schema:
+        type: string
+    - name: datetime
+      in: query
+      required: true
+      description: UTC datetime format
+      schema:
+        type: string
+        format: date-time
+  responses:
+    '200':
+      description: Currency rate
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../main.yml#/components/schemas/CurrencyRate'
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '404':
+      description: Entity Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'

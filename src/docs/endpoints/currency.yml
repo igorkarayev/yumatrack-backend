@@ -1,0 +1,41 @@
+get:
+  summary: Return available currencies
+  operationId: getCurrencyies
+  tags:
+    - currencies
+  responses:
+    '200':
+      description: Currencies
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '../main.yml#/components/schemas/Currency'
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '404':
+      description: Entity Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'

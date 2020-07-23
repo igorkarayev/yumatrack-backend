@@ -1,0 +1,143 @@
+
+TransactionForCreateCounterparty:
+  type: object
+  required:
+    - '__type'
+    - 'companiesCounterpartyId'
+  properties:
+    '__type':
+      type: string
+      enum: [counterparty]
+    companiesCounterpartyId:
+      type: string
+
+TransactionForCreateAddress:
+  type: object
+  required:
+    - '__type'
+    - 'companiesCounterpartyId'
+    - 'addressId'
+  properties:
+    '__type':
+      type: string
+      enum: [address]
+    companiesCounterpartyId:
+      type: string
+    addressId:
+      type: string
+
+TransactionForCreate:
+  type: object
+  required:
+    - fromStation
+    - toStation
+    - currencySymbol
+    - amount
+  properties:
+    fromStation:
+      $ref: '../main.yml#/components/schemas/TransactionForCreateCounterparty'
+    toStation:
+      oneOf:
+        - $ref: '../main.yml#/components/schemas/TransactionForCreateCounterparty'
+        - $ref: '../main.yml#/components/schemas/TransactionForCreateAddress'
+    currencySymbol:
+      type: string
+      example: XBTC
+    amount:
+      type: string
+      example: "0.01"
+
+Transaction:
+  type: object
+  required:
+    - id
+    - type
+    - currencySymbol
+    - amount
+    - status
+    - initiatedBy
+    - fromStation
+    - toStation
+    - createdAt
+  properties:
+    id:
+      type: string
+      format: uuid
+    externalId:
+      type: string
+    type:
+      type: string
+    currencySymbol:
+      type: string
+    txId:
+      type: string
+    blockchainExplorerUrl:
+      type: string
+    amount:
+      type: number
+    status:
+      type: string
+      enum: [pending_approval, sending, in_transit, received, issue, manual_verification]
+    initiatedBy:
+      $ref: '../main.yml#/components/schemas/PublicUserDetails'
+    approvedBy:
+      $ref: '../main.yml#/components/schemas/PublicUserDetails'
+    fromStation:
+      $ref: '../main.yml#/components/schemas/TransactionCounterpartyStation'
+    toStation:
+      $ref: '../main.yml#/components/schemas/TransactionStation'
+    createdAt:
+      type: string
+      format: date-time
+    approvedAt:
+      type: string
+      format: date-time
+
+TransactionForApprove:
+  type: object
+  properties:
+    code:
+      type: string
+      description: 2FA code
+    tfaType:
+      type: string
+      description: 2FA entity type
+
+Station:
+  oneOf:
+    - $ref: '../main.yml#/components/schemas/TransactionCounterpartyStation'
+    - $ref: '../main.yml#/components/schemas/TransactionAddressStation'
+
+CounterpartyStation:
+  type: object
+  required:
+    - '__type'
+    - counterparty
+  properties:
+    '__type':
+      type: string
+      enum: [counterparty]
+    counterparty:
+      $ref: '../main.yml#/components/schemas/CounterpartyConnection'
+
+AddressStation:
+  type: object
+  required:
+    - '__type'
+    - counterparty
+    - address
+  properties:
+    '__type':
+      type: string
+      enum: [address]
+    address:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        address:
+          type: string
+    counterparty:
+      $ref: '../main.yml#/components/schemas/CounterpartyConnection'

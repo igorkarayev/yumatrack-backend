@@ -1,0 +1,80 @@
+GetTransactionsFromStations:
+  get:
+    summary: Get transactions from stations
+    operationId: getTransactionsFromStations
+    tags:
+      - transactions
+    responses:
+      '200':
+        description: Available stations details
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: array
+                  items:
+                    $ref: '../main.yml#/components/schemas/TransactionStation'
+      '401':
+        description: Unauthorized
+        content:
+          application/json:
+            schema:
+              $ref: '../main.yml#/components/schemas/Error'
+      '409':
+        description: Already Exists
+        content:
+          application/json:
+            schema:
+              $ref: '../main.yml#/components/schemas/Error'
+      '422':
+        description: Unprocessable Entity
+        content:
+          application/json:
+            schema:
+              $ref: '../main.yml#/components/schemas/Error'
+
+GetTransactionsToStations:
+  get:
+    summary: Get transactions to stations
+    operationId: getTransactionsToStations
+    tags:
+      - transactions
+    parameters:
+      - name: asset
+        in: query
+        required: true
+        description: asset of transaction
+        schema:
+          type: string
+    responses:
+      '200':
+        description: Available stations details
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: array
+                  items:
+                    $ref: '../main.yml#/components/schemas/TransactionStation'
+      '401':
+        description: Unauthorized
+        content:
+          application/json:
+            schema:
+              $ref: '../main.yml#/components/schemas/Error'
+      '409':
+        description: Already Exists
+        content:
+          application/json:
+            schema:
+              $ref: '../main.yml#/components/schemas/Error'
+      '422':
+        description: Unprocessable Entity
+        content:
+          application/json:
+            schema:
+              $ref: '../main.yml#/components/schemas/Error'

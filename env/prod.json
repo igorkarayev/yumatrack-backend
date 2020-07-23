@@ -1,0 +1,8 @@
+{
+  "LOGGING": {
+    "CLOUDWATCH": {
+      "LEVEL": "info"
+    }
+  },
+  "SERVICE_PORT": 80
+}

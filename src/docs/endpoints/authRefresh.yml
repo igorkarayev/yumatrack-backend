@@ -1,0 +1,31 @@
+post:
+  summary: Refresh Access Token
+  operationId: refresh
+  tags:
+    - auth
+  requestBody:
+    description: Refresh token
+    content:
+      application/json:
+        schema:
+          $ref: '../main.yml#/components/schemas/RefreshToken'
+    required: true
+  responses:
+    '200':
+      description: Tokens info
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../main.yml#/components/schemas/Tokens'
+    '204':
+      description: No Content
+      content: {}
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'

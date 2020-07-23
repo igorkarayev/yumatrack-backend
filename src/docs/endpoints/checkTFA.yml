@@ -1,0 +1,15 @@
+get:
+  summary: Check if tfa is enabled
+  operationId: checkTFA
+  tags:
+    - service
+  responses:
+    '204':
+      description: No Content
+      content: {}
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'

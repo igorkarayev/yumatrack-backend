@@ -1,0 +1,49 @@
+post:
+  summary: Set PCurv user id(SA)
+  operationId: setUserIdPCurv
+  tags:
+    - companies
+  parameters:
+    - name: companyId
+      in: path
+      required: true
+      description: Company id
+      schema:
+        type: string
+        format: uuid
+  requestBody:
+    description: PCurv user and bot ids
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            userIdPCurv:
+              type: string
+              format: uuid
+            botIdPCurv:
+              type: string
+              format: uuid
+    required: true
+  responses:
+    '204':
+      description: No Content
+      content: {}
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '404':
+      description: Entity Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'

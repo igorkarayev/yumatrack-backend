@@ -1,0 +1,41 @@
+get:
+  summary: Returns companies connection most recent balances information
+  operationId: getCounterpartyConnectionMostRecentBalances
+  tags:
+    - counterparties
+  parameters:
+    - name: counterpartyConnectionId
+      in: path
+      required: true
+      description: Counterparty connection id
+      schema:
+        type: string
+        format: uuid
+  responses:
+    '200':
+      description: Counterparty connection balances information
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../main.yml#/components/schemas/CounterpartyMostRecentBalances'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '404':
+      description: Entity Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'

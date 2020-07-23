@@ -1,0 +1,47 @@
+Credential:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+    email:
+      type: string
+CredentialWithCompany:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+    companyId:
+      type: string
+      format: uuid
+    email:
+      type: string
+Passwords:
+  type: object
+  properties:
+    currentPassword:
+      type: string
+    newPassword:
+      type: string
+Tokens:
+  type: object
+  properties:
+    refreshToken:
+      type: string
+    accessToken:
+      type: string
+    expired:
+      type: string
+RefreshToken:
+  type: object
+  properties:
+    refreshToken:
+      type: string
+SetNewPasswordByToken:
+  type: object
+  properties:
+    token:
+      type: string
+    password:
+      type: string

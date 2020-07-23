@@ -1,0 +1,26 @@
+{
+  "LOGGING": {
+    "CLOUDWATCH": {
+      "LEVEL": "silly"
+    }
+  },
+  "SERVICE_PORT": 8080,
+  "DATABASE": {
+    "CONNECTION_NAME": "local_yuma",
+    "TYPEORM_CONNECTION": "postgres",
+    "TYPEORM_HOST": "localhost",
+    "TYPEORM_USERNAME": "local_user_yuma",
+    "TYPEORM_PASSWORD": "yumayuma1",
+    "TYPEORM_DATABASE": "local_yumatrack",
+    "TYPEORM_PORT": 5432
+  },
+  "JWT": {
+    "SECRET": "yumayuma1",
+    "EXPIRES_IN": 3600,
+    "EXPIRES_IN_REFRESH": "14d"
+  },
+  "SEED": {
+    "SUPER_ADMIN_EMAIL": "admin@admin.com",
+    "SUPER_ADMIN_PASSWORD": "12345678"
+  }
+}

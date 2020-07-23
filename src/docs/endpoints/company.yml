@@ -1,0 +1,58 @@
+get:
+  summary: Returns list of companies (SA)
+  operationId: getListOfCompanies
+  tags:
+    - companies
+  responses:
+    '200':
+      description: List of companies
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '../main.yml#/components/schemas/Company'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+post:
+  summary: Creates company (Superadmin)
+  operationId: createCompany
+  tags:
+    - companies
+  requestBody:
+    description: Company information for create
+    content:
+      application/json:
+        schema:
+          $ref: '../main.yml#/components/schemas/CompanyForCreate'
+    required: true
+  responses:
+    '200':
+      description: Company information
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../main.yml#/components/schemas/Company'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+  

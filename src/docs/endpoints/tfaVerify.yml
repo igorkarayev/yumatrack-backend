@@ -1,0 +1,35 @@
+post:
+  summary: Verify TFA for user
+  operationId: postTFAVerify
+  tags:
+    - users
+  parameters:
+    - name: userId
+      in: path
+      required: true
+      description: User id
+      schema:
+        type: string
+        format: uuid
+  requestBody:
+    description: TFA verify data
+    content:
+      application/json:
+        schema:
+          $ref: '../main.yml#/components/schemas/TFAVerify'
+  responses:
+    '204':
+      description: No Content
+      content: {}
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'

@@ -1,0 +1,84 @@
+get:
+  summary: Returns information of a specific counterparty connection (SA)
+  operationId: getCounterpartyConnectionDetails
+  tags:
+    - counterparties
+  parameters:
+    - name: counterpartyConnectionId
+      in: path
+      required: true
+      description: Counterparty connection id
+      schema:
+        type: string
+        format: uuid
+  responses:
+    '200':
+      description: Counterparty connection information. Secret is encoded in base64-string
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../main.yml#/components/schemas/CounterpartyConnectionDetailsForSA'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '404':
+      description: Entity Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+put:
+  summary: Updates counterparty connection (SA, CA)
+  operationId: updateCounterpartyConnection
+  tags:
+    - counterparties
+  parameters:
+    - name: counterpartyConnectionId
+      in: path
+      required: true
+      description: Counterparty connection id
+      schema:
+        type: string
+        format: uuid
+  requestBody:
+    description: Counterparty connection information for updating
+    content:
+      application/json:
+        schema:
+          $ref: '../main.yml#/components/schemas/CounterpartyConnectionForUpdate'
+    required: true
+  responses:
+    '204':
+      description: No Content
+      content: {}
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '404':
+      description: Entity Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+

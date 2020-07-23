@@ -1,0 +1,52 @@
+{
+  "compilerOptions": {
+    "lib": ["es2019"],
+    "module": "commonjs",
+    "rootDir": ".",
+    "outDir": "build/",
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "sourceMap": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "strictNullChecks": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "noUnusedLocals": true,
+    "allowJs": true,
+    "alwaysStrict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": false,
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2019",
+    "resolveJsonModule": true,
+    "paths": {
+      "@src/*": ["./src/*"],
+      "@services/*": ["./src/services/*"],
+      "@entities/*": ["./src/entities/*"],
+      "@helpers/*": ["./src/helpers/*"],
+      "@repositories/*": ["./src/repositories/*"],
+      "@constants/*": ["./src/constants/*"],
+      "@routes/*": ["./src/routes/*"],
+      "@middleware/*": ["./src/middleware/*"],
+      "@env/*": ["./env/*"],
+      "@migrations/*": ["./src/database/migrations/*"],
+      "@database/*": ["./src/database/*"],
+      "@typeorm/*": ["./src/typeorm/*"],
+      "@validation/*": ["./src/validation/*"],
+      "@errors/*": ["./src/helpers/errors/*"]
+    }
+  },
+  "exclude": [
+    "./node_modules",
+    "./build",
+    "./webpack.config.js"
+  ],
+  "emitDecoratorMetadata": true,
+  "experimentalDecorators": true
+}

@@ -1,0 +1,31 @@
+post:
+  summary: Sign In
+  operationId: login
+  tags:
+    - auth
+  requestBody:
+    description: User information for sign In
+    content:
+      application/json:
+        schema:
+          $ref: '../main.yml#/components/schemas/Credential'
+    required: true
+  responses:
+    '200':
+      description: Tokens info
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../main.yml#/components/schemas/Tokens'
+    '204':
+      description: No Content
+      content: {}
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'

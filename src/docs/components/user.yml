@@ -1,0 +1,119 @@
+User:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+    fullName:
+      type: string
+    tradingName:
+      type: string
+    email:
+      type: string
+    phone:
+      type: string
+    company:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        status:
+          type: string
+    roles:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+            format: uuid
+          role:
+            type: string
+    status:
+      type: string
+      enum: [invited, pending, active, blocked]
+    registeredAt:
+      type: string
+      format: date-time
+UserForUpdate:
+  type: object
+  properties:
+    fullName:
+      type: string
+    tradingName:
+      type: string
+    email:
+      type: string
+    phone:
+      type: string
+UserForCreate:
+  type: object
+  required:
+    - roleId
+    - fullName
+    - email
+    - phone
+  properties:
+    roleId:
+      type: string
+      format: uuid
+    fullName:
+      type: string
+    email:
+      type: string
+    phone:
+      type: string
+RolesCongiguration:
+  type: object
+  required:
+    - included
+    - excluded
+  properties:
+    included:
+      type: array
+      items:
+        type: string
+        format: uuid
+    excluded:
+      type: array
+      items:
+        type: string
+        format: uuid
+StatusCongiguration:
+  type: object
+  required:
+    - status
+  properties:
+    status:
+      type: string
+      enum: [active, blocked]
+PublicUserDetails:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+    fullName:
+      type: string
+TFA:
+  type: object
+  properties:
+    code:
+      type: string
+    url:
+      type: string
+TFAEnable:
+  type: object
+  properties:
+    code:
+      type: string
+    enable:
+      type: boolean
+TFAVerify:
+  type: object
+  properties:
+    code:
+      type: string

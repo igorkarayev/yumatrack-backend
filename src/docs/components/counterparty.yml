@@ -1,0 +1,217 @@
+Counterparty:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+    name:
+      type: string
+    type:
+      type: string
+      enum: [exchange, bank]
+    iconUrl:
+      type: string
+    requiredConfirmationsCount:
+      type: number
+    createdAt:
+      type: string
+      format: date-time
+    updatedAt:
+      type: string
+      format: date-time
+CounterpartyConnectionForCreate:
+  type: object
+  required:
+    - counterpartyId
+    - name
+    - apiKey
+    - apiSecret
+  properties:
+    counterpartyId:
+      type: string
+      format: uuid
+    name:
+      type: string
+    apiKey:
+      type: string
+    apiSecret:
+      type: string
+WalletIdRequest:
+  type: object
+  required:
+    - walletId
+  properties:
+    walletId:
+      type: string
+      format: uuid
+DepositAddress:
+  type: object
+  required:
+    - companiesCounterpartyIdFrom
+    - asset
+  properties:
+    companiesCounterpartyIdFrom:
+      type: string
+      format: uuid
+    asset:
+      type: string
+    isNew:
+      type: boolean
+DepositAddressResponse:
+  type: object
+  properties:
+    address:
+      type: string
+    expiretm:
+      type: number
+    new:
+      type: boolean
+CounterpartyConnection:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+    counterparty:
+      type: string
+    counterpartyIconUrl:
+      type: string
+    accountName:
+      type: string
+    type:
+      type: string
+      enum: [exchange, bank]
+    status:
+      type: string
+      enum: [active, error, pending]
+InternalCounterpartyConnection:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+    counterparty:
+      type: string
+    counterpartyIconUrl:
+      type: string
+    accountName:
+      type: string
+    type:
+      type: string
+      enum: [exchange, bank]
+    status:
+      type: string
+      enum: [active, error, pending]
+    currencySymbol:
+      type: string
+    address:
+      type: string
+    blockchainAddressExplorerUrl:
+      type: string
+CounterpartyConnectionDetailsForSA:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+    accountName:
+      type: string
+    companyName:
+      type: string
+    counterpartyName:
+      type: string
+    counterpartyType:
+      type: string
+      enum: [exchange, bank]
+    counterpartyIconUrl:
+      type: string
+    status:
+      type: string
+      enum: [active, error, pending]
+    secret:
+      type: string
+    requestDate:
+      type: string
+      format: date-time
+CounterpartyConnectionRequests:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+    accountName:
+      type: string
+    companyName:
+      type: string
+    counterpartyName:
+      type: string
+    counterpartyType:
+      type: string
+      enum: [exchange, bank]
+    counterpartyIconUrl:
+      type: string
+    status:
+      type: string
+      enum: [active, error, pending]
+    requestDate:
+      type: string
+      format: date-time
+    approvalDate:
+      type: string
+      format: date-time
+CounterpartyConnectionForUpdate:
+  type: object
+  properties:
+    name:
+      type: string
+    apiKey:
+      type: string
+    apiSecret:
+      type: string
+CounterpartyConnectionStatusCongiguration:
+  type: object
+  required:
+    - status
+  properties:
+    status:
+      type: string
+      enum: [inactive]
+CounterpartyName: &CounterpartyNameEnum
+  type: string
+  enum:
+    - Kraken
+    - Mercadabitcoin
+ValidateCounterpartyCredentials:
+  type: object
+  required:
+    - counterpartyName
+    - apiKey
+    - apiSecret
+  properties:
+    counterpartyName:
+      *CounterpartyNameEnum
+    apiKey:
+      type: string
+      description: Public key to identify user
+    apiSecret:
+      type: string
+      description: Private key to sign payload
+CounterpartyWarnings:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+    reason:
+      type: string
+      enum: [invalid_key, invalid_nonce, invalid_signature, permission_denied, unknown]
+    message:
+      type: string
+    createdAt:
+      type: string
+      format: date-time
+    updatedAt:
+      type: string
+      format: date-time
+    counterpartyConnection:
+      $ref: '../main.yml#/components/schemas/CounterpartyConnection'

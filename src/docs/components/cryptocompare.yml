@@ -1,0 +1,12 @@
+CurrencyRate:
+  type: object
+  properties:
+    sourceCurrency:
+      type: string
+    targetCurrency:
+      type: string
+    rate:
+      type: string
+    datetime:
+      type: string
+      format: date-time

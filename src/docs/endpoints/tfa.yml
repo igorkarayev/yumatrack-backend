@@ -1,0 +1,80 @@
+get:
+  summary: Returns generated tfa code and url for Auth
+  operationId: getTFA
+  tags:
+    - users
+  parameters:
+    - name: userId
+      in: path
+      required: true
+      description: User id
+      schema:
+        type: string
+        format: uuid
+  responses:
+    '200':
+      description: TFA information
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../main.yml#/components/schemas/TFA'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+
+post:
+  summary: Enable TFA for user
+  operationId: postEnableTFA
+  tags:
+    - users
+  parameters:
+    - name: userId
+      in: path
+      required: true
+      description: User id
+      schema:
+        type: string
+        format: uuid
+  requestBody:
+    description: TFA enable data
+    content:
+      application/json:
+        schema:
+          $ref: '../main.yml#/components/schemas/TFAEnable'
+  responses:
+    '200':
+      description: Verified info
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'

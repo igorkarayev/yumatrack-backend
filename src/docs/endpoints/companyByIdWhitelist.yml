@@ -1,0 +1,43 @@
+get:
+  summary: Get list of whitelisted addresses of a specific company (CA & Superadmin)
+  operationId: getListOfWhitelistedAddresses
+  tags:
+    - whitelist
+  parameters:
+    - name: companyId
+      in: path
+      required: true
+      description: Company id
+      schema:
+        type: string
+        format: uuid
+  responses:
+    '200':
+      description: List of whitelisted addresses
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '../main.yml#/components/schemas/WhitelistedAddress'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '404':
+      description: Entity Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'

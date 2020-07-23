@@ -1,0 +1,31 @@
+get:
+  summary: Get Two-Factor Authentication
+  operationId: tfa
+  tags:
+    - auth
+  requestBody:
+    description: User information for sign In
+    content:
+      application/json:
+        schema:
+          $ref: '../main.yml#/components/schemas/TFARequest'
+    required: true
+  responses:
+    '200':
+      description: TFA info
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../main.yml#/components/schemas/TFA'
+    '204':
+      description: No Content
+      content: {}
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'

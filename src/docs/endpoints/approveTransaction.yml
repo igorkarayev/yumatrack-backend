@@ -1,0 +1,48 @@
+post:
+  summary: Approve transaction
+  operationId: approveTransactionById
+  tags:
+    - transactions
+  parameters:
+    - name: transactionId
+      in: path
+      required: true
+      description: Id of target transaction
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../main.yml#/components/schemas/TransactionForApprove'
+  responses:
+    '202':
+      description: Transaction details
+      content:
+        application/json:
+          schema:
+            type: object
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '404':
+      description: Entity Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'

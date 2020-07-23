@@ -1,0 +1,60 @@
+ConsolidatedBalance:
+  type: object
+  properties:
+    connectionId:
+      type: string
+      format: uuid
+    connectionName:
+      type: string
+    companyName:
+      type: string
+    counterpartyName:
+      type: string
+    counterpartyType:
+      type: string
+      enum: [exchange, bank]
+    counterpartyIconUrl:
+      type: string
+    consolidatedBalance:
+      type: array
+      items:
+        $ref: '../main.yml#/components/schemas/Balance'
+Balance:
+  type: object
+  properties:
+    currencySymbol:
+      type: string
+    currencyType:
+      type: string
+      enum: [crypto, fiat]
+    balanceValue:
+      type: number
+    balanceType:
+      type: string
+      enum: [account, trade]
+MostRecentBalanceItem:
+  type: array
+  items:
+    type: object
+    properties:
+      asset:
+        type: string
+        description: Asset code
+        example: BTC
+      balance:
+        type: string
+        description: Balance value
+        example: "0.3435353"
+      createdAt:
+        type: string
+        format: date-time
+      updatedAt:
+        type: string
+        format: date-time
+CounterpartyMostRecentBalances:
+  type: object
+  properties:
+    account:
+      $ref: '../main.yml#/components/schemas/MostRecentBalanceItem'
+    available:
+      $ref: '../main.yml#/components/schemas/MostRecentBalanceItem'

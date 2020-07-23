@@ -1,0 +1,42 @@
+patch:
+  summary: Sets status (CA & Superadmin)
+  operationId: setCompanyStatus
+  tags:
+    - companies
+  parameters:
+    - name: companyId
+      in: path
+      required: true
+      description: Company id
+      schema:
+        type: string
+        format: uuid
+  requestBody:
+    description: Status
+    content:
+      application/json:
+        schema:
+          $ref: '../main.yml#/components/schemas/CompanyStatusCongiguration'
+    required: true
+  responses:
+    '204':
+      description: No Content
+      content: {}
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '404':
+      description: Entity Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'

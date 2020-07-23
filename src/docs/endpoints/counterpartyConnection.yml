@@ -1,0 +1,76 @@
+get:
+  summary: Returns list of counterparty connection requests (SA)
+  operationId: getListOfCounterpartyConnectionRequests
+  tags:
+    - counterparties
+  responses:
+    '200':
+      description: List of counterparty connection requests
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '../main.yml#/components/schemas/CounterpartyConnectionRequests'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '404':
+      description: Entity Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+post:
+  summary: Creates counterparty connection (CA)
+  operationId: createCounterpartyConnection
+  tags:
+    - counterparties
+  requestBody:
+    description: Сounterparty connection information for create
+    content:
+      application/json:
+        schema:
+          $ref: '../main.yml#/components/schemas/CounterpartyConnectionForCreate'
+    required: true
+  responses:
+    '201':
+      description: Created
+      content: {}
+    '400':
+      description: Connection Credentials Not Valid Error
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '404':
+      description: Entity Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+

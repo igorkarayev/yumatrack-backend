@@ -1,0 +1,17 @@
+post:
+  summary: Sign Out
+  operationId: logout
+  tags:
+    - auth
+  responses:
+    '200':
+      description: OK Status
+    '204':
+      description: No Content
+      content: {}
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'

@@ -1,0 +1,29 @@
+post:
+  summary: Creates address for whitelist (CA)
+  operationId: createWhitelistedAddresses
+  tags:
+    - whitelist
+  requestBody:
+    description: Whitelisted address for create
+    content:
+      application/json:
+        schema:
+          $ref: '../main.yml#/components/schemas/WhitelistedAddressForCreate'
+    required: true
+  responses:
+    '201':
+      description: Created
+      content: {}
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+  

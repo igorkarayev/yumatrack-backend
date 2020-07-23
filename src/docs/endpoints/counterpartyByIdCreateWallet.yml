@@ -1,0 +1,42 @@
+post:
+  summary: Add pCurve walletId to connection
+  operationId: postCounterpartyConnectionCreateWalletId
+  tags:
+    - counterparties
+  parameters:
+    - name: counterpartyConnectionId
+      in: path
+      required: true
+      description: Counterparty connection id
+      schema:
+        type: string
+        format: uuid
+  requestBody:
+    description: Validate counterparty credentials payload
+    content:
+      application/json:
+        schema:
+          $ref: '../main.yml#/components/schemas/WalletIdRequest'
+  responses:
+    '204':
+      description: No Content
+      content: {}
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '404':
+      description: Entity Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+

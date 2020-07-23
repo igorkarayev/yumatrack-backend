@@ -1,0 +1,23 @@
+get:
+  summary: Returns list of counterparties
+  operationId: getListOfCounterparties
+  tags:
+    - counterparties
+  responses:
+    '200':
+      description: List of counterparties
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '../main.yml#/components/schemas/Counterparty'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'

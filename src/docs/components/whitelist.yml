@@ -1,0 +1,40 @@
+WhitelistedAddress:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+    customerId:
+      type: string
+      format: uuid
+    name:
+      type: string
+    address:
+      type: string
+    blockchainExplorerUrl:
+      type: string
+    status:
+      type: string
+      enum: [pending_addition, approved]
+    currency:
+      type: object
+      properties:
+        currencyId:
+          type: string
+          format: uuid
+        label:
+          type: string
+        code:
+          type: string
+        blockchainNetwork:
+          type: string
+
+WhitelistedAddressForCreate:
+  type: object
+  properties:
+    name:
+      type: string
+    currencyCode:
+      type: string
+    address:
+      type: string

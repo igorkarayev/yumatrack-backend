@@ -1,0 +1,17 @@
+Pagination:
+  type: object
+  required:
+    - currentPage
+    - totalPage
+    - totalRecord
+    - limit
+  properties:
+    currentPage:
+      type: number
+    totalPage:
+      type: number
+    totalRecord:
+      type: number
+    limit:
+      type: number
+      

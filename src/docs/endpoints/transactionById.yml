@@ -1,0 +1,46 @@
+get:
+  summary: Get specific transation
+  operationId: getTransactionById
+  tags:
+    - transactions
+  parameters:
+    - name: transactionId
+      in: path
+      required: true
+      description: Id of target transaction
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Transaction details
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../main.yml#/components/schemas/Transaction'
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '404':
+      description: Entity Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'

@@ -1,0 +1,43 @@
+get:
+  summary: Returns list of counterparty connections warnings of a specific company (SA, CA)
+  operationId: getListOfCounterpartyWarnings
+  tags:
+    - counterparties
+  parameters:
+    - name: companyId
+      in: path
+      required: true
+      description: Company id
+      schema:
+        type: string
+        format: uuid
+  responses:
+    '200':
+      description: List of counterparty connections warnings
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '../main.yml#/components/schemas/CounterpartyWarnings'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '404':
+      description: Entity Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'

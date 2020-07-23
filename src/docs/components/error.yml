@@ -1,0 +1,20 @@
+Error:
+  type: object
+  required:
+    - code
+    - target
+  properties:
+    errors:
+      type: array
+      items:
+        type: object
+        properties:
+          code:
+            type: string
+          target:
+            type: string
+            enum: [field, common]
+          message:
+            type: string
+          source:
+            type: object

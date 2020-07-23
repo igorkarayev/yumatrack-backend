@@ -1,0 +1,43 @@
+get:
+  summary: Returns list of internal counterparty connections of a specific company (secure wallets)(CA & Superadmin)
+  operationId: getListOfInternalCounterpartyConnections
+  tags:
+    - counterparties
+  parameters:
+    - name: companyId
+      in: path
+      required: true
+      description: Company id
+      schema:
+        type: string
+        format: uuid
+  responses:
+    '200':
+      description: List of internal counterparty connections (secure wallets)
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '../main.yml#/components/schemas/InternalCounterpartyConnection'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '404':
+      description: Entity Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'

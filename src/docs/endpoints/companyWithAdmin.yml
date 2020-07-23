@@ -1,0 +1,46 @@
+post:
+  summary: Creates company and company admin (SA)
+  operationId: createCompanyAndAdmin
+  tags:
+    - companies
+  requestBody:
+    description: Company and admin information for create
+    content:
+      application/json:
+        schema:
+          $ref: '../main.yml#/components/schemas/CompanyAndAdminForCreate'
+    required: true
+  responses:
+    '200':
+      description: Created company and company admin
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../main.yml#/components/schemas/CredentialWithCompany'
+    '400':
+      description: Query Failed Error
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '409':
+      description: Already Exists
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'

@@ -1,0 +1,12 @@
+Currency:
+  type: object
+  properties:
+    code:
+      type: string
+    name:
+      type: string
+    type:
+      type: string
+      enum: [CRYPTO,FIAT]
+    iconUrl:
+      type: string

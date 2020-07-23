@@ -1,0 +1,40 @@
+get:
+  summary: Returns deposit address information
+  operationId: getDepositAddressOrCreate
+  tags:
+    - counterparties
+  requestBody:
+    description: Data to get DepositAddress
+    content:
+      application/json:
+        schema:
+          $ref: '../main.yml#/components/schemas/DepositAddress'
+    required: true
+  responses:
+    '200':
+      description: DepositAddress info
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../main.yml#/components/schemas/DepositAddressResponse'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '404':
+      description: Entity Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'

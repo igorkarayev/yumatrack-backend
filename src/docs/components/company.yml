@@ -1,0 +1,52 @@
+Company:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+    name:
+      type: string
+    status:
+      type: string
+      enum: [active, inactive]
+CompanyForCreate:
+  type: object
+  required:
+    - name
+  properties:
+    name:
+      type: string
+    status:
+      type: string
+      enum: [active, inactive]
+CompanyAndAdminForCreate:
+  type: object
+  required:
+    - name
+    - fullName
+    - email
+    - phone
+  properties:
+    name:
+      type: string
+      description: Company name
+    fullName:
+      type: string
+    email:
+      type: string
+    phone:
+      type: string
+    
+CompanyForUpdate:
+  type: object
+  properties:
+    name:
+      type: string
+CompanyStatusCongiguration:
+  type: object
+  required:
+    - status
+  properties:
+    status:
+      type: string
+      enum: [active, inactive]

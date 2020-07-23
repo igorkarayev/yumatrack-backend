@@ -1,0 +1,27 @@
+{
+  "LOGGING": {
+    "CLOUDWATCH": {
+      "LEVEL": "debug"
+    }
+  },
+  "SERVICE_PORT": 8080,
+  "DATABASE": {
+    "CONNECTION_NAME": "local_yuma",
+    "TYPEORM_CONNECTION": "postgres",
+    "TYPEORM_HOST": "localhost",
+    "TYPEORM_USERNAME": "local_user_yuma",
+    "TYPEORM_PASSWORD": "yumayuma1",
+    "TYPEORM_DATABASE": "local_yumatrack",
+    "TYPEORM_PORT": 5432
+  },
+  "JWT": {
+    "SECRET": "yumayuma1",
+    "EXPIRES_IN": 3600,
+    "EXPIRES_IN_REFRESH": "14d"
+  },
+  "PASSWORD_TOKEN": {
+    "CONFIRMATION_URL": "http://localhost:3000/auth/onboarding",
+    "LENGTH": 100,
+    "LIVENESS_IN_HOURS": 72
+  }
+}

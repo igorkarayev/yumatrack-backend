@@ -1,0 +1,47 @@
+post:
+  summary: Invites user to system (CA)
+  operationId: inviteUser
+  tags:
+    - users
+  requestBody:
+    description: User information for create
+    content:
+      application/json:
+        schema:
+          $ref: '../main.yml#/components/schemas/UserForCreate'
+    required: true
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../main.yml#/components/schemas/Credential'
+    '400':
+      description: Query Failed Error
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '409':
+      description: Already Exists
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+  

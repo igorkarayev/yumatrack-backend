@@ -1,0 +1,91 @@
+get:
+  summary: Returns information of a specific user
+  operationId: getUserById
+  tags:
+    - users
+  parameters:
+    - name: userId
+      in: path
+      required: true
+      description: User id
+      schema:
+        type: string
+        format: uuid
+  responses:
+    '200':
+      description: User information
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '../main.yml#/components/schemas/User'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '404':
+      description: Entity Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+
+put:
+  summary: Updates information of a specific user (CU & CA & Superadmin)
+  operationId: updateUser
+  tags:
+    - users
+  parameters:
+    - name: userId
+      in: path
+      required: true
+      description: User id
+      schema:
+        type: string
+        format: uuid
+  requestBody:
+    description: User information for updating
+    content:
+      application/json:
+        schema:
+          $ref: '../main.yml#/components/schemas/UserForUpdate'
+    required: true
+  responses:
+    '204':
+      description: No Content
+      content: {}
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '404':
+      description: Entity Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '409':
+      description: Already Exists
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '../main.yml#/components/schemas/Error'
+    
