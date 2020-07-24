@@ -34,6 +34,10 @@ export class createReportsTable1595583321021 implements MigrationInterface {
             name: 'time',
             type: 'int',
           },
+          {
+              name:'is_paid',
+              type:'boolean',
+          }
         ],
       }),
       true
