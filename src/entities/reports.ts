@@ -15,7 +15,7 @@ export class Reports {
 
   @Column({
     type: 'varchar',
-    length: 1000,
+    length: 2000,
     nullable: true,
   })
   public description: string;
@@ -34,7 +34,6 @@ export class Reports {
 
   @Column({
     type: 'uuid',
-    nullable: true,
   })
   public user_id: string;
 
@@ -42,7 +41,19 @@ export class Reports {
     type: 'boolean',
     nullable: true,
   })
-  public is_paid: string;
+  public isPaid: string;
+
+  @Column({
+    type: 'timestamp',
+    default: () => 'now()',
+  })
+  public createdAt: Date;
+
+  @Column({
+    type: 'timestamp',
+    default: () => 'now()',
+  })
+  public updatedAt: Date;
 
   @ManyToOne('User', 'reports', {
     onDelete: 'CASCADE',

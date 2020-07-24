@@ -35,8 +35,20 @@ export class createReportsTable1595583321021 implements MigrationInterface {
             type: 'int',
           },
           {
-              name:'is_paid',
-              type:'boolean',
+            name:'is_paid',
+            type:'boolean',
+          },
+          {
+            name: 'created_at',
+            type: 'timestamp',
+            isNullable: false,
+            default: 'CURRENT_TIMESTAMP'
+          },
+          {
+            name: 'updated_at',
+            type: 'timestamp',
+            isNullable: false,
+            default: 'CURRENT_TIMESTAMP'
           }
         ],
       }),
