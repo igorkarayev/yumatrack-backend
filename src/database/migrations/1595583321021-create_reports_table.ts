@@ -13,7 +13,7 @@ export class createReportsTable1595583321021 implements MigrationInterface {
         columns: [
           {
             name: 'id',
-            type: 'int',
+            type: 'uuid',
             isPrimary: true,
             isGenerated: true,
             generationStrategy: 'increment',
