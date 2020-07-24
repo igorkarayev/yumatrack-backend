@@ -35,7 +35,7 @@ export class Reports {
   @Column({
     type: 'uuid',
   })
-  public user_id: string;
+  public userId: string;
 
   @Column({
     type: 'boolean',
