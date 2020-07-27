@@ -1,16 +1,17 @@
 // import pg from 'pg';
-import { ConnectionOptions } from 'typeorm';
-import { CustomNamingStrategy } from '@typeorm/customNamingStrategy';
-import { config } from '@src/config';
-import { User } from '@entities/user';
-import { Role } from '@entities/role';
-import { Company } from '@entities/company';
-import { Permission } from '@entities/permission';
-import { UsersCompany } from '@entities/usersCompany';
-import { UsersRole } from '@entities/usersRole';
-import { Token } from '@entities/token';
-import { EntityPermission } from '@entities/entityPermission';
-import { PasswordToken } from '@entities/passwordToken';
+import { ConnectionOptions } from "typeorm";
+import { CustomNamingStrategy } from "@typeorm/customNamingStrategy";
+import { config } from "@src/config";
+import { User } from "@entities/user";
+import { Role } from "@entities/role";
+import { Reports } from "@entities/reports";
+import { Company } from "@entities/company";
+import { Permission } from "@entities/permission";
+import { UsersCompany } from "@entities/usersCompany";
+import { UsersRole } from "@entities/usersRole";
+import { Token } from "@entities/token";
+import { EntityPermission } from "@entities/entityPermission";
+import { PasswordToken } from "@entities/passwordToken";
 
 // Workaround to escape timezone conversion
 // @link: https://github.com/typeorm/typeorm/issues/2622#issuecomment-476416712
@@ -28,6 +29,7 @@ module.exports = <ConnectionOptions>{
   entities: [
     User,
     Role,
+    Reports,
     Company,
     Permission,
     UsersCompany,
@@ -39,6 +41,6 @@ module.exports = <ConnectionOptions>{
   synchronize: false,
   logging: true,
   namingStrategy: new CustomNamingStrategy(),
-  seeds: ['src/database/seeds/*.seed.ts'],
-  factories: ['src/database/factories/*.factory.ts'],
+  seeds: ["src/database/seeds/*.seed.ts"],
+  factories: ["src/database/factories/*.factory.ts"],
 };

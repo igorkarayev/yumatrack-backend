@@ -4,63 +4,64 @@ import {
   PrimaryGeneratedColumn,
   JoinColumn,
   ManyToOne,
-} from 'typeorm';
+  BaseEntity,
+} from "typeorm";
 
-import { User } from '@entities/user';
+import { User } from "@entities/user";
 
-@Entity('reports')
-export class Reports {
-  @PrimaryGeneratedColumn('uuid')
+@Entity("reports")
+export class Reports extends BaseEntity {
+  @PrimaryGeneratedColumn("uuid")
   public id: string;
 
   @Column({
-    type: 'varchar',
+    type: "varchar",
     length: 2000,
     nullable: true,
   })
   public description: string;
 
   @Column({
-    type: 'timestamp',
+    type: "timestamp",
     nullable: true,
   })
   public date: Date;
 
   @Column({
-    type: 'int',
+    type: "int",
     nullable: true,
   })
   public time: number;
 
   @Column({
-    type: 'uuid',
+    type: "uuid",
   })
   public userId: string;
 
   @Column({
-    type: 'boolean',
+    type: "boolean",
     nullable: true,
   })
   public isPaid: string;
 
   @Column({
-    type: 'timestamp',
-    default: () => 'now()',
+    type: "timestamp",
+    default: () => "now()",
   })
   public createdAt: Date;
 
   @Column({
-    type: 'timestamp',
-    default: () => 'now()',
+    type: "timestamp",
+    default: () => "now()",
   })
   public updatedAt: Date;
 
-  @ManyToOne('User', 'reports', {
-    onDelete: 'CASCADE',
+  @ManyToOne("User", "reports", {
+    onDelete: "CASCADE",
   })
   @JoinColumn({
-    name: 'user_id',
-    referencedColumnName: 'id',
+    name: "user_id",
+    referencedColumnName: "id",
   })
   public user: User;
 }
