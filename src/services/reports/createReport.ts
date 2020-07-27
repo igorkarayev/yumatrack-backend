@@ -2,25 +2,26 @@ import { Reports } from "@entities/reports";
 import { CustomEntityManager } from "@src/typeorm/customEntityManager";
 
 interface Report {
-  userId: number;
+  userId: string;
   description: string;
   date: Date;
   time: number;
   isPaid: boolean;
 }
 
-export const createReport = async () => {
+export const createReport = async (newReport: any) => {
   const entityManager: CustomEntityManager = await CustomEntityManager.getEntityManager();
-  const report = generateReport();
+  const report = generateReport(newReport);
   await entityManager.save(report);
 };
 
-const generateReport = () => {
+const generateReport = (newReport: Report) => {
   const report = new Reports();
-  report.userId = "65244acd-8431-4e07-902e-a8f1dee95c5b";
-  report.description = "Hell";
-  report.date = new Date();
-  report.time = 180;
-  report.isPaid = "false";
+  const { userId, description, date, time, isPaid } = newReport;
+  report.userId = userId;
+  report.description = description;
+  report.date = date;
+  report.time = time;
+  report.isPaid = isPaid;
   return report;
 };

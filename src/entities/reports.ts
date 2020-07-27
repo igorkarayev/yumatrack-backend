@@ -42,7 +42,7 @@ export class Reports extends BaseEntity {
     type: "boolean",
     nullable: true,
   })
-  public isPaid: string;
+  public isPaid: boolean;
 
   @Column({
     type: "timestamp",

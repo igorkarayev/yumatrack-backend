@@ -5,17 +5,21 @@ import { wrapper } from "@helpers/wrapperData";
 
 const router = Router();
 
-router.post(
-  "/createReport",
-  async (req: Request, res: Response, next: NextFunction) => {
-    try {
-      const result = await createReport();
-      res.send(wrapper(result));
-    } catch (e) {
-      res.send(e);
-    }
+router.post("/createReport", async (req: any, res: any, next: NextFunction) => {
+  try {
+    const { userId, date, description, time, isPaid } = req.body;
+    const result = await createReport({
+      userId,
+      date,
+      description,
+      time,
+      isPaid,
+    });
+    res.send(wrapper(result));
+  } catch (e) {
+    res.send(e);
   }
-);
+});
 
 router.get(
   "/getReport",
