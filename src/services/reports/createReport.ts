@@ -13,6 +13,7 @@ export const createReport = async (newReport: any) => {
   const entityManager: CustomEntityManager = await CustomEntityManager.getEntityManager();
   const report = generateReport(newReport);
   await entityManager.save(report);
+  return report;
 };
 
 const generateReport = (newReport: Report) => {
