@@ -1,17 +1,19 @@
 import { EntityRepository, Repository } from "typeorm";
 import { Reports } from "@entities/reports";
 import { EntityNotFoundError } from "@errors/custom/entityNotFoundError";
+import { User } from "@src/entities/user";
 
 @EntityRepository(Reports)
 export class ReportsRepository extends Repository<Reports> {
-  public async findReportDetailsByUser(userId: string): Promise<Reports[]> {
+  public async findReportDetailsByUserId(userId: string): Promise<Reports[]> {
     const report: Reports[] | undefined = await this.createQueryBuilder(
       Reports.name
     )
-      .where(`${Reports.name}.user_id = :userId`, { userId })
+      .leftJoinAndSelect(`${Reports.name}.user`, User.name)
+      .where(`"${User.name}"."id" = :userId`, { userId })
       .getMany();
     if (!report) {
-      throw new EntityNotFoundError("User", { text: "User is not found" });
+      throw new EntityNotFoundError("Report", { text: "Report is not found" });
     }
 
     return report;

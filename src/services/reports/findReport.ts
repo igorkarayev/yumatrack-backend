@@ -1,23 +1,19 @@
 import { Reports } from "@entities/reports";
 import { CustomEntityManager } from "@typeorm/customEntityManager";
-import { createQueryBuilder } from "typeorm";
 
-// interface IReport {
-//   userId: number;
-//   description: string;
-//   date: Date;
-//   time: number;
-//   isPaid: boolean;
-// }
-
-export const findReport = async (id: string) => {
+export const findReport = async (userId: string): Promise<Reports[]> => {
   const entityManager: CustomEntityManager = await CustomEntityManager.getEntityManager();
-  const report = generateReport();
-  await entityManager.find(id);
-  return await entityManager.find(id);
+  const reportRepository = entityManager.getReportRepository();
+  const reports = reportRepository.findReportDetailsByUserId(userId);
+  return reports;
 };
 
-const generateReport = async () => {
-  const report = new Reports();
-  return report;
-};
+// const serializeReport = (report: any) => {
+//   return {
+//     userId: report.userId,
+//     description: report.description,
+//     date: report.date,
+//     time: report.time,
+//     isPaid: report.isPaid,
+//   };
+// };

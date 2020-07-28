@@ -34,11 +34,6 @@ export class Reports extends BaseEntity {
   public time: number;
 
   @Column({
-    type: "uuid",
-  })
-  public userId: string;
-
-  @Column({
     type: "boolean",
     nullable: true,
   })

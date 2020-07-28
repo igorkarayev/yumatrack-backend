@@ -35,7 +35,7 @@ app.use("/users", isAuth, userRouter);
 app.use("/companies", isAuth, companyRouter);
 app.use("/auth", authRouter);
 app.use("/services", serviceRouter);
-app.use("/report", reportRouter);
+app.use("/report", isAuth, reportRouter);
 
 // invalid URL
 app.use(invalidUrl);
