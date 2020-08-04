@@ -1,6 +1,8 @@
 import { NextFunction, Request, Response, Router } from "express";
 import { createReport } from "../../src/services/reports/createReport";
 import { findReport } from "../../src/services/reports/findReport";
+import { deleteReportByReportId } from "../../src/services/reports/deleteReport";
+import { updateReportByReportId } from "../../src/services/reports/updateReport";
 import { wrapper } from "@helpers/wrapperData";
 import { AuthService } from "@src/services/auth";
 
@@ -34,5 +36,25 @@ router.get(
     }
   }
 );
+
+router.delete("/deleteReport", async (req: Request, res: Response) => {
+  try {
+    const { reportId } = req.body;
+    const result = await deleteReportByReportId(reportId);
+    res.json(wrapper(result));
+  } catch (e) {
+    res.send(e);
+  }
+});
+
+router.put("/updateReport", async (req: Request, res: Response) => {
+  try {
+    const { reportId, newReport } = req.body;
+    const result = await updateReportByReportId(reportId);
+    res.json(wrapper(result));
+  } catch (e) {
+    res.send(e);
+  }
+});
 
 export const reportRouter = router;
