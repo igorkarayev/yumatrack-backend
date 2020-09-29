@@ -50,6 +50,7 @@ router.delete("/deleteReport", async (req: Request, res: Response) => {
 router.put("/updateReport", async (req: Request, res: Response) => {
   try {
     const { reportId, newReport } = req.body;
+    console.log(reportId);
     const result = await updateReportByReportId(reportId);
     res.json(wrapper(result));
   } catch (e) {
