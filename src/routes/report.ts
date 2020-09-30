@@ -3,6 +3,7 @@ import { createReport } from "../../src/services/reports/createReport";
 import { findReport } from "../../src/services/reports/findReport";
 import { deleteReportByReportId } from "../../src/services/reports/deleteReport";
 import { updateReportByReportsId } from "../../src/services/reports/updateReport";
+import { findReportsBetweenDates } from "../../src/services/reports/filterReports";
 import { wrapper } from "@helpers/wrapperData";
 import { AuthService } from "@src/services/auth";
 
@@ -61,12 +62,18 @@ router.put("/updateReport/:reportId", async (req: Request, res: Response) => {
   }
 });
 
-router.get("/getReportsBetween", async (req: Request, res: Response) => {
-  try {
-    // const {req}
-  } catch (e) {
-    res.send(e);
+router.get(
+  "/getReportsBetween/:userId",
+  async (req: Request, res: Response) => {
+    try {
+      const { userId } = req.params;
+      const { startDate, endDate } = req.body;
+      const result = await findReportsBetweenDates(userId, startDate, endDate);
+      res.json(wrapper(result));
+    } catch (e) {
+      res.send(e);
+    }
   }
-});
+);
 
 export const reportRouter = router;

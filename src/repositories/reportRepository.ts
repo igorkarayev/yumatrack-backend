@@ -19,15 +19,34 @@ export class ReportsRepository extends Repository<Reports> {
     return report;
   }
 
-  public async updateReportByReportId(id: string) {
-    const currentId = Number(id);
-    const response = await this.createQueryBuilder(Reports.name)
+  // public async updateReportByReportId(id: string) {
+  //   const currentId = Number(id);
+  //   const response = await this.createQueryBuilder(Reports.name)
+  //     .leftJoinAndSelect(`${Reports.name}.user`, User.name)
+  //     .update(Reports)
+  //     .set({ description: "Hello its test" })
+  //     .where(`"${Reports.name}"."id" = :id`, { currentId })
+  //     .execute();
+  //   return response;
+  // }
+
+  public async findReportsBetweenDates(
+    userId: string,
+    startDate: Date,
+    endDate: Date
+  ) {
+    const reports: Reports[] | undefined = await this.createQueryBuilder(
+      Reports.name
+    )
       .leftJoinAndSelect(`${Reports.name}.user`, User.name)
-      .update(Reports)
-      .set({ description: "Hello its test" })
-      .where(`"${Reports.name}"."id" = :id`, { currentId })
-      .execute();
-    return response;
+      .where(`"${User.name}"."id" = :userId`, { userId })
+      .andWhere(`date >= :startDate and date <= :endDate`, {
+        startDate,
+        endDate,
+      })
+      .getMany();
+
+    return reports;
   }
 
   public async findReportByReportId(id: string) {
