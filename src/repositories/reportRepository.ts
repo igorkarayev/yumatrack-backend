@@ -20,11 +20,12 @@ export class ReportsRepository extends Repository<Reports> {
   }
 
   public async updateReportByReportId(id: string) {
+    const currentId = Number(id);
     const response = await this.createQueryBuilder(Reports.name)
       .leftJoinAndSelect(`${Reports.name}.user`, User.name)
       .update(Reports)
       .set({ description: "Hello its test" })
-      .where(`"${Reports.name}"."id" = :id`, { id })
+      .where(`"${Reports.name}"."id" = :id`, { currentId })
       .execute();
     return response;
   }

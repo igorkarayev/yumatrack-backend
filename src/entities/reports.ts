@@ -28,7 +28,7 @@ export class Reports extends BaseEntity {
   public date: Date;
 
   @Column({
-    type: "int",
+    type: "int4",
     nullable: true,
   })
   public time: number;
