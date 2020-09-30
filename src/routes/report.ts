@@ -37,19 +37,23 @@ router.get(
   }
 );
 
-router.delete("/deleteReport", async (req: Request, res: Response) => {
-  try {
-    const { reportId } = req.body;
-    const result = await deleteReportByReportId(reportId);
-    res.json(wrapper(result));
-  } catch (e) {
-    res.send(e);
+router.delete(
+  "/deleteReport/:reportId",
+  async (req: Request, res: Response) => {
+    try {
+      const { reportId } = req.params;
+      const result = await deleteReportByReportId(reportId);
+      res.json(wrapper(result));
+    } catch (e) {
+      res.send(e);
+    }
   }
-});
+);
 
-router.put("/updateReport", async (req: Request, res: Response) => {
+router.put("/updateReport/:reportId", async (req: Request, res: Response) => {
   try {
-    const { reportId, newReport } = req.body;
+    const { newReport } = req.body;
+    const { reportId } = req.params;
     const result = await updateReportByReportsId(newReport, reportId);
     res.json(wrapper(result));
   } catch (e) {
@@ -57,25 +61,12 @@ router.put("/updateReport", async (req: Request, res: Response) => {
   }
 });
 
-// router.put(
-//   '/:userId',
-//   authorize([Roles.SADMIN, Roles.CADMIN, Roles.USER]),
-//   async (req: Request, res: Response, next: NextFunction) => {
-//     try {
-//       const idRequest = new IdTypeRequest({ id: req.params.userId });
-
-//       const newUserDetails = new UserUpdateRequest({
-//         userId: idRequest.id,
-//         ...req.body,
-//       });
-
-//       await updateUserDetails(idRequest.id, newUserDetails);
-
-//       res.status(HttpCode.NO_CONTENT).send();
-//     } catch (e) {
-//       next(e);
-//     }
-//   },
-// );
+router.get("/getReportsBetween", async (req: Request, res: Response) => {
+  try {
+    // const {req}
+  } catch (e) {
+    res.send(e);
+  }
+});
 
 export const reportRouter = router;
