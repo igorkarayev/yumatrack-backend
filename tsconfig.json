@@ -42,11 +42,7 @@
       "@errors/*": ["./src/helpers/errors/*"]
     }
   },
-  "exclude": [
-    "./node_modules",
-    "./build",
-    "./webpack.config.js"
-  ],
+  "exclude": ["./node_modules", "./build", "./webpack.config.js"],
   "emitDecoratorMetadata": true,
   "experimentalDecorators": true
 }

@@ -1,10 +1,9 @@
 {
-  "rulesDirectory": [
-    "node_modules/tslint-microsoft-contrib"
-  ],
-  "extends": [
-    "tslint-microsoft-contrib/recommended"
-  ],
+  "rulesDirectory": ["node_modules/tslint-microsoft-contrib"],
+  "extends": ["tslint-microsoft-contrib/recommended"],
+  "linterOptions": {
+    "typeCheck": true
+  },
   "rules": {
     "no-suspicious-comment": false,
     "export-name": false,
@@ -24,18 +23,12 @@
     "no-unnecessary-field-initialization": false,
     "possible-timing-attack": false,
     "use-default-type-parameter": false,
-    "array-type": [
-      true,
-      "array"
-    ],
+    "array-type": [true, "array"],
     "arrow-return-shorthand": true,
     "await-promise": true,
     "adjacent-overload-signatures": true,
     "align": true,
-    "arrow-parens": [
-      true,
-      "ban-single-arg-parens"
-    ],
+    "arrow-parens": [true, "ban-single-arg-parens"],
     "ban": [
       true,
       "eval",
@@ -43,32 +36,19 @@
         "name": "$",
         "message": "please don't"
       },
-      [
-        "describe",
-        "only"
-      ],
+      ["describe", "only"],
       {
-        "name": [
-          "it",
-          "only"
-        ],
+        "name": ["it", "only"],
         "message": "don't focus tests"
       },
       {
-        "name": [
-          "chai",
-          "assert",
-          "equal"
-        ],
+        "name": ["chai", "assert", "equal"],
         "message": "Use 'strictEqual' instead."
       }
     ],
     "callable-types": true,
     "class-name": true,
-    "comment-format": [
-      true,
-      "check-space"
-    ],
+    "comment-format": [true, "check-space"],
     "completed-docs": false,
     "curly": true,
     "cyclomatic-complexity": false,
@@ -76,25 +56,12 @@
     "file-header": false,
     "forin": true,
     "import-spacing": true,
-    "indent": [
-      true,
-      "spaces",
-      2
-    ],
+    "indent": [true, "spaces", 2],
     "interface-over-type-literal": true,
     "label-position": true,
-    "linebreak-style": [
-      true,
-      "LF"
-    ],
-    "max-classes-per-file": [
-      true,
-      5
-    ],
-    "max-file-line-count": [
-      true,
-      300
-    ],
+    "linebreak-style": [true, "LF"],
+    "max-classes-per-file": [true, 5],
+    "max-file-line-count": [true, 300],
     "max-line-length": [
       true,
       {
@@ -115,18 +82,8 @@
     "no-bitwise": true,
     "no-boolean-literal-compare": true,
     "no-conditional-assignment": true,
-    "no-consecutive-blank-lines": [
-      true
-    ],
-    "no-console": [
-      true,
-      "debug",
-      "info",
-      "log",
-      "time",
-      "timeEnd",
-      "trace"
-    ],
+    "no-consecutive-blank-lines": [true],
+    "no-console": [true, "debug", "info", "log", "time", "timeEnd", "trace"],
     "no-construct": true,
     "no-debugger": true,
     "no-default-export": true,
@@ -144,21 +101,13 @@
         "ignore-module": "(\\.html|\\.css)$"
       }
     ],
-    "increment-decrement": [
-      true,
-      "allow-post"
-    ],
+    "increment-decrement": [true, "allow-post"],
     "no-inferrable-types": false,
     "no-inferred-empty-object-type": false,
     "no-internal-module": true,
     "no-invalid-template-strings": true,
     "no-invalid-this": true,
-    "no-magic-numbers": [
-      true,
-      -1,
-      0,
-      1
-    ],
+    "no-magic-numbers": [true, -1, 0, 1],
     "no-mergeable-namespace": true,
     "no-misused-new": true,
     "no-multiline-string": false,
@@ -185,10 +134,7 @@
     "no-var-requires": true,
     "no-this-assignment": true,
     "no-void-expression": false,
-    "object-literal-key-quotes": [
-      true,
-      "as-needed"
-    ],
+    "object-literal-key-quotes": [true, "as-needed"],
     "object-literal-shorthand": false,
     "object-literal-sort-keys": false,
     "one-line": [
@@ -204,9 +150,7 @@
       "allow-declarations",
       "allow-named-functions"
     ],
-    "ordered-imports": [
-      false
-    ],
+    "ordered-imports": [false],
     "prefer-const": true,
     "prefer-for-of": false,
     "prefer-function-over-method": false,
@@ -214,17 +158,10 @@
     "prefer-template": false,
     "strict-type-predicates": false,
     "promise-function-async": false,
-    "quotemark": [
-      true,
-      "single"
-    ],
+    "quotemark": [true, "single"],
     "radix": false,
     "restrict-plus-operands": false,
-    "semicolon": [
-      true,
-      "always",
-      "ignore-bound-class-methods"
-    ],
+    "semicolon": [true, "always", "ignore-bound-class-methods"],
     "space-before-function-paren": false,
     "strict-boolean-expressions": false,
     "switch-default": false,
@@ -235,19 +172,14 @@
         "multiline": "never"
       }
     ],
-    "triple-equals": [
-      true,
-      "allow-null-check"
-    ],
+    "triple-equals": [true, "allow-null-check"],
     "typedef": [
       true,
       "parameter",
       "property-declaration",
       "member-variable-declaration"
     ],
-    "typedef-whitespace": [
-      false
-    ],
+    "typedef-whitespace": [false],
     "unified-signatures": true,
     "use-isnan": true,
     "whitespace": [
@@ -271,10 +203,7 @@
     "no-redundant-jsdoc": false,
     "no-return-await": true,
     "no-submodule-imports": false,
-    "no-unnecessary-class": [
-      true,
-      "allow-static-only"
-    ],
+    "no-unnecessary-class": [true, "allow-static-only"],
     "no-unnecessary-type-assertion": false,
     "number-literal-format": true,
     "prefer-conditional-expression": false,
@@ -283,8 +212,6 @@
     "space-within-parens": true,
     "switch-final-break": true,
     "type-literal-delimiter": false,
-    "object-curly-spacing": [
-      "always"
-    ]
+    "object-curly-spacing": ["always"]
   }
 }

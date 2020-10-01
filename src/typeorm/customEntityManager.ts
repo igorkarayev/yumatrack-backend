@@ -1,14 +1,15 @@
 // tslint:disable-next-line:no-import-side-effect
-import 'reflect-metadata';
-import { EntityManager } from 'typeorm';
-import { Connection } from 'typeorm/connection/Connection';
-import { connector } from '@database/connector';
-import { UserRepository } from '@repositories/userRepository';
-import { RoleRepository } from '@repositories/roleRepository';
-import { CompanyRepository } from '@repositories/companyRepository';
-import { PermissionRepository } from '@repositories/permissionRepository';
-import { UsersRoleRepository } from '@repositories/usersRoleRepository';
-import { TokenRepository } from '@repositories/tokenRepository';
+import "reflect-metadata";
+import { EntityManager } from "typeorm";
+import { Connection } from "typeorm/connection/Connection";
+import { connector } from "@database/connector";
+import { UserRepository } from "@repositories/userRepository";
+import { RoleRepository } from "@repositories/roleRepository";
+import { CompanyRepository } from "@repositories/companyRepository";
+import { PermissionRepository } from "@repositories/permissionRepository";
+import { UsersRoleRepository } from "@repositories/usersRoleRepository";
+import { TokenRepository } from "@repositories/tokenRepository";
+import { ReportsRepository } from "@repositories/reportRepository";
 
 export class CustomEntityManager extends EntityManager {
   private static instance: CustomEntityManager;
@@ -49,5 +50,9 @@ export class CustomEntityManager extends EntityManager {
 
   public getTokenRepository(): TokenRepository {
     return this.getCustomRepository(TokenRepository);
+  }
+
+  public getReportRepository(): ReportsRepository {
+    return this.getCustomRepository(ReportsRepository);
   }
 }
