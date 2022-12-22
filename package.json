@@ -57,7 +57,7 @@
     "emitter-listener": "^1.1.2",
     "express": "^4.17.1",
     "generate-password": "^1.5.1",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "mustache": "^4.0.1",
     "p-debounce": "^2.1.0",
     "pg": "^7.18.2",
